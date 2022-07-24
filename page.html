@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            ToDo Tasks
+        </title>
+        <link rel="stylesheet" href="style.css"/>
+        <script src="script.js"></script>
+    </head>
+    <body id = "bodySection">
+        <div>
+            <div id="inputSection">
+                <div class="padding">
+                    <label for="name">Enter task name:</label>
+                    <br/>
+                    <input id="name" name="taskName"/> 
+                </div>
+
+                <div class="padding">
+                    <label for="description">Enter task description:</label>
+                    <br/>
+                    <input id="description" name="taskDescription"/>
+                </div>
+
+                <div class="padding">
+                    <label for="deadline">Enter task deadline:</label>
+                    <br/>
+                    <input id="deadline" name="taskDeadline"/>
+                </div>
+
+                <div class="padding">
+                    <label for="id">Enter task id for changing or removing:</label>
+                    <br/>
+                    <input id="id" name="taskId"/>
+                </div>
+            </div>
+    
+            <div id="buttonSection">
+                <div class="padding">
+                    <button class="padding" onclick="addTask()">
+                        Add task
+                    </button>
+                </div>                
+
+                <div class="padding">
+                    <button class="padding" onclick="changeTask()">
+                        Change task
+                    </button>
+                </div>
+                
+                <div class="padding">
+                    <button class="padding" onclick="removeTask()">
+                        Remove task
+                    </button>
+                </div>                
+            </div>
+    
+            <div id="tableSection">
+                <table id = "table">
+                    <thead id="tableHeaderElement">
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Description
+                            </th>
+                            
+                            <th>
+                                Deadline
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyElement">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

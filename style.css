@@ -1,0 +1,40 @@
+table,
+thead,
+tbody,
+th,
+tr,
+td {
+    border: 1px solid rgb(165, 2, 206);
+    background-color: rgb(250, 223, 255);
+    margin: auto;
+}
+
+#bodySection {
+    display: flex;
+    justify-content: center;
+}
+
+#inputSection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#buttonSection {
+    display: flex;
+    justify-content: center;
+}
+
+.padding{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
