@@ -20,13 +20,17 @@ function addTask()
     {
         alert('Please enter deadline value');
         return;
-    }
+    }  
 
     const bodySection = document.getElementById('tableBodyElement');
     const tableRow = document.createElement('tr');
+    tableRow.contentEditable = true;
 
     const id = document.createElement('td');
-    id.textContent = document.getElementById('table').rows.length;
+    id.textContent = bodySection.rows.length + 1;
+    id.id = id.textContent + 'id';
+
+    localStorage.setItem(id.textContent, JSON.stringify([nameValue, descriptionValue, deadlineValue]));
 
     const name = document.createElement('td');
     name.textContent = nameValue;
@@ -40,53 +44,38 @@ function addTask()
     deadline.textContent = deadlineValue;
     deadline.id = id.textContent + 'deadline';
 
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.id = id.textContent + 'delete';
+    deleteBtn.onclick = () => 
+    {
+        document.getElementById(id.textContent).remove();
+        localStorage.removeItem(id.textContent);
+    };
+
     tableRow.appendChild(id);
     tableRow.appendChild(name);
     tableRow.appendChild(description);
     tableRow.appendChild(deadline);
+    tableRow.appendChild(deleteBtn);
     tableRow.id = id.textContent;
 
     bodySection.appendChild(tableRow);
 }
 
-function changeTask()
+function sort(column, flag)
 {
-    const idValue = document.getElementById('id').value;
-    const nameValue = document.getElementById('name').value;
-    const descriptionValue = document.getElementById('description').value;
-    const deadlineValue = document.getElementById('deadline').value;
-
-    if (!idValue)
+    const bodySection = document.getElementById('tableBodyElement');
+    let rowsArray = Array.from(bodySection.rows);
+    if(flag)
     {
-        alert('Please enter id value');
-        return;
+        rowsArray.sort((a, b) => a.cells[column].textContent > b.cells[column].textContent ? 1 : -1);
     }
-
-    if (nameValue)
+    else
     {
-        document.getElementById(idValue + 'name').textContent = nameValue;
-    }
-    
-    if (descriptionValue)
-    {
-        document.getElementById(idValue + 'description').textContent = descriptionValue;
-    }
+        rowsArray.sort((a, b) => a.cells[column].textContent < b.cells[column].textContent ? 1 : -1);
+    }    
 
-    if (deadlineValue)
-    {
-        document.getElementById(idValue + 'deadline').textContent = deadlineValue;
-    }
-}
-
-function removeTask()
-{
-    const idValue = document.getElementById('id').value;
-
-    if (!idValue)
-    {
-        alert('Please enter id value');
-        return;
-    }
-
-    document.getElementById(idValue).remove();
+    bodySection.append(...rowsArray);
+    return !flag;
 }
